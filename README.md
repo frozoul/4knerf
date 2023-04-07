@@ -1,15 +1,15 @@
-# Nerfies
+# 4K-NeRF
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for the [4K-NeRF website](https://4knerf.github.io).
 
-If you find Nerfies useful for your work please cite:
+If you find 4K-NeRF useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}
+@article{wang20224k,
+      title={4K-NeRF: High Fidelity Neural Radiance Fields at Ultra High Resolutions},
+      author={Wang, Zhongshu and Li, Lingzhi and Shen, Zhen and Shen, Li and Bo, Liefeng},
+      journal={arXiv preprint arXiv:2212.04701},
+      year={2022}
+    }
 ```
 
 # Website License
