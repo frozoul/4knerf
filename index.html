@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="4K-NeRF: High Fidelity Neural Radiance Fields at Ultra High Resolutions.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4K-NeRF: High Fidelity Neural Radiance Fields at Ultra High Resolutions</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">4K-NeRF: High Fidelity Neural Radiance Fields at Ultra High Resolutions</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a>Zhongshu Wang</a>,</span>
+            <span class="author-block">
+              <a href="https://https://lingzhili.com/">Lingzhi Li</a>,</span>
+            <span class="author-block">
+              <a>Zhen Shen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://lishen-shirley.github.io/">Li Shen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.cs.washington.edu/istc/lfb/">Liefeng Bo</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Alibaba Group</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2212.04701"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://github.com/frozoul/4K-NeRF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/frozoul/4K-NeRF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+    <div class="hero-body">
+      <td width="1000px">
+        <center>
+          <img class="rounded" src="./static/images/teaser.jpg" width="2000px">
+        </center>
+      </td>
+      <h2 class="subtitle has-text-centered">
+        Visual comparison between DVGO and our method on example scenes in 4K-Synthetic-NeRF and 4K-LLFF.
+      </h2>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this paper, we present a novel and effective framework, named 4K-NeRF, to pursue high fidelity view synthesis on the challenging scenarios of ultra high resolutions, building on the methodology of neural radiance fields (NeRF).
+          </p>
+          <p>
+            The rendering procedure of NeRF-based methods typically relies on a pixel-wise manner in which rays (or pixels) are treated independently on both training and inference phases, limiting its representational ability on describing subtle details, especially when lifting to a extremely high resolution. We address the issue by exploring ray correlation to enhance high-frequency details recovery. Particularly, we use the 3D-aware encoder to model geometric information effectively in a lower resolution space and recover fine details through the 3D-aware decoder, conditioned on ray features and depths estimated by the encoder. Joint training with patch-based sampling further facilitates our method incorporating the supervision from perception oriented regularization beyond pixel-wise loss.
+          </p>
+          <p>
+            Benefiting from the use of geometry-aware local context, our method can significantly boost rendering quality on high-frequency details compared with modern NeRF methods, and achieve the state-of-the-art visual quality on 4K ultra-high-resolution scenarios.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="container">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-steve">
+              <video poster="" id="steve" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/fern_cp.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/horns_cp.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/drums_cp.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/mic_cp.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<div class="disclaimerbox">
+  <center>
+    <h2 class="title is-3">Pipeline</h2>
+  </center>
+  <br>
+  <span style="color:#a8e7d4"></span>
+    <tr>
+      <td width="400px">
+        <center>
+          <img class="rounded" src="./static/images/4k-pipeline.png" width="1000px">
+        </center>
+      </td>
+    </tr>
+  </span>
+  <div class="container is-max-desktop">
+      The overall pipeline of 4K-NeRF. Using patch-based ray sampling, we jointly train the 3D-Aware encoder for embedding 3D geometric information in a lower resolution space and the 3D-Aware decoder for realizing rendering enhancement on high-frequency details in the full resolution space.
+  </div>
+</div> 
+<br>
+
+<section class="section">
+  <h2 class="title is-3 is-centered has-text-centered">Video</h2>
+    <div class="container is-max-desktop">
+      <h2 class="subtitle has-text-centered">
+        The following is a demonstration of videos in four representative scenes. We strongly recommend watching each video in full screen mode for the best visual effect.
+      </h2>
+    </div>
+  <div class="column is-full-width">
+    <table align="left" width="720px">
+      <tbody>
+        <tr>
+        <td>
+          <left>
+            <video muted autoplay controls muted loop playsinline width="1000px">
+              <source src="./static/videos/fern_cp.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </left>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="rigth" width="720px">
+      <tbody>
+        <tr>
+        <td>
+          <right>
+            <video muted autoplay controls muted loop playsinline width="1000px">
+              <source src="./static/videos/horns_cp.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </right>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="left" width="720px">
+      <tbody>
+        <tr>
+        <td>
+          <left>
+            <video muted autoplay controls muted loop playsinline width="1000px">
+              <source src="./static/videos/drums_cp.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </left>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="rigth" width="720px">
+      <tbody>
+        <tr>
+        <td>
+          <right>
+            <video muted autoplay controls muted loop playsinline width="1000px">
+              <source src="./static/videos/mic_cp.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </right>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+<!-- <br> -->
+<!-- <hr> -->
+  </div>
+</section>
+
+<!-- <section class="hero is-light">
+  <h2 class="title is-3 is-centered has-text-centered">Video</h2>
+  <div class="hero-body">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="slider-item is-slide-previous" data-slider-index="1" style="width: 700px">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/fern_cp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        </div>
+        <div class="slider-item is-current" data-slider-index="2" style="width: 700px">
+        <div class="item item-chair">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/horns_cp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        </div>
+        <div class="slider-item is-slide-next" data-slider-index="3" style="width: 700px">
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/drums_cp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        </div>
+        <div class="slider-item" data-slider-index="4" style="width: 700px">
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/mic_cp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        </div>
+      </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light">
+  <h2 class="title is-3 is-centered has-text-centered">Video</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/materialsmall_mid_sta.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/materials_mid_sta.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/shipsmall_mid_sta.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/ship_mid_sta.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/leaves_small.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/leaves_large.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/trex_small.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/trex_large.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparison Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            The following shows how our method compares in detail to all kinds of comparison methods in representative scenario.
+          </p>
+        </div>
+        <!-- <tr>
+          <td width="400px">
+            <center>
+              <img class="rounded" src="./static/images/syn_final.jpg" width="1000px">
+            </center>
+          </td>
+        </tr> -->
+        <br/>
+        <tr>
+          <td width="400px">
+            <center>
+              <img class="rounded" src="./static/images/comparev5-crop.jpg" width="1200px">
+            </center>
+          </td>
+        </tr>
+      </div>
+    </div>
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{wang20224k,
+      title={4K-NeRF: High Fidelity Neural Radiance Fields at Ultra High Resolutions},
+      author={Wang, Zhongshu and Li, Lingzhi and Shen, Zhen and Shen, Li and Bo, Liefeng},
+      journal={arXiv preprint arXiv:2212.04701},
+      year={2022}
+    }</code></pre>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/4K_NeRF.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/frozoul/4K-NeRF" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          We'd like to thank Guangyuan Wang and Qing Ran for helpful advice and discussion. Source code of this webpage was borrow from  <a
+            href="https://nerfies.github.io/">Nerfies</a> .
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
