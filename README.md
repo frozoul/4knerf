@@ -1,6 +1,6 @@
 # 4K-NeRF
 
-This is the repository that contains source code for the [4K-NeRF website](https://4knerf.github.io).
+This is the repository that contains source code for the [4K-NeRF website](https://frozoul.github.io/4knerf/).
 
 If you find 4K-NeRF useful for your work please cite:
 ```
